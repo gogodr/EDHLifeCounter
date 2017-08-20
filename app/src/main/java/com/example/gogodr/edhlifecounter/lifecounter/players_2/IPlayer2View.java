@@ -5,4 +5,6 @@ package com.example.gogodr.edhlifecounter.lifecounter.players_2;
  */
 
 public interface IPlayer2View {
+    void initialize();
 }
+

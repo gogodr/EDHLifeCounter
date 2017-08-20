@@ -5,6 +5,6 @@ package com.example.gogodr.edhlifecounter.models;
  */
 
 public interface IPlayerActions {
-    void add();
-    void minus();
+    void add(int playerId, int amount);
+    void toggleState(int playerId,Player.State state);
 }

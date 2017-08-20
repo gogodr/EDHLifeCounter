@@ -6,4 +6,26 @@
     android:layout_height="match_parent"
     tools:context="com.example.gogodr.edhlifecounter.ui.Players2Activity">
 
+    <fragment
+        android:id="@+id/player1"
+        android:name="com.example.gogodr.edhlifecounter.lifecounter.components.counter.CounterFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        tools:layout="@layout/fragment_counter"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/player2"
+        app:layout_constraintHorizontal_bias="0.5"
+        />
+    <fragment
+        android:id="@+id/player2"
+        android:name="com.example.gogodr.edhlifecounter.lifecounter.components.counter.CounterFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        tools:layout="@layout/fragment_counter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/player1"/>
 </android.support.constraint.ConstraintLayout>

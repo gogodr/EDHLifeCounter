@@ -7,10 +7,27 @@ import java.util.ArrayList;
  */
 
 public class Player {
+
+    public static enum State {
+        LIFE,
+        POISON,
+        COMMANDER_DAMAGE
+    }
+
     private String name;
     private int life;
     private int poison;
+    private State state = Player.State.LIFE;
+
     private ArrayList<Integer> commanderDamage;
+
+    public State getState() {
+        return state;
+    }
+
+    public void setState(State state) {
+        this.state = state;
+    }
 
     public Player(String name, int life, int poison, ArrayList<Integer> commanderDamage) {
         this.name = name;
