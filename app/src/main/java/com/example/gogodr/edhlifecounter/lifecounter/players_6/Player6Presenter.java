@@ -1,4 +1,4 @@
-package com.example.gogodr.edhlifecounter.lifecounter.players_2;
+package com.example.gogodr.edhlifecounter.lifecounter.players_6;
 
 import com.example.gogodr.edhlifecounter.models.Player;
 
@@ -8,18 +8,18 @@ import java.util.List;
  * Created by gogodr on 8/19/2017.
  */
 
-public class Player2Presenter implements IPlayer2Presenter {
-    IPlayer2View view;
-    Player2Interactor interactor;
+public class Player6Presenter implements IPlayer6Presenter {
+    IPlayer6View view;
+    Player6Interactor interactor;
 
-    public Player2Presenter(IPlayer2View view) {
+    public Player6Presenter(IPlayer6View view) {
         this.view = view;
-        this.interactor = new Player2Interactor();
+        this.interactor = new Player6Interactor();
     }
 
     @Override
     public void toggleState(int playerId) {
-        interactor.toggleState(playerId, new IPlayer2Interactor.OnChangeState() {
+        interactor.toggleState(playerId, new IPlayer6Interactor.OnChangeState() {
             @Override
             public void changeState(List<Player> players) {
                 for (int i = 0; i < players.size(); i++) {
@@ -42,7 +42,7 @@ public class Player2Presenter implements IPlayer2Presenter {
 
     @Override
     public void add(int playerId, int amount) {
-        interactor.add(playerId, amount, new IPlayer2Interactor.OnChangeValue() {
+        interactor.add(playerId, amount, new IPlayer6Interactor.OnChangeValue() {
             @Override
             public void changeValue(int playerId, String value) {
                 view.updateValue(playerId, value);

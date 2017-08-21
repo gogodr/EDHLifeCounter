@@ -1,13 +1,14 @@
 package com.example.gogodr.edhlifecounter.models;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by gogodr on 8/19/2017.
  */
 
 public class Player {
-
+    public static int NO_PLAYER_ID = 99;
     public static enum State {
         LIFE,
         POISON,
@@ -17,9 +18,9 @@ public class Player {
     private String name;
     private int life;
     private int poison;
-    private State state = Player.State.LIFE;
-
-    private ArrayList<Integer> commanderDamage;
+    private State state;
+    private List<Integer> commanderDamage;
+    private int commanderDamagePlayerId;
 
     public State getState() {
         return state;
@@ -29,11 +30,37 @@ public class Player {
         this.state = state;
     }
 
-    public Player(String name, int life, int poison, ArrayList<Integer> commanderDamage) {
-        this.name = name;
-        this.life = life;
-        this.poison = poison;
-        this.commanderDamage = commanderDamage;
+    public Player(int players) {
+        this.name = "";
+        this.life = 40;
+        this.poison = 0;
+        this.state = Player.State.LIFE;
+        this.commanderDamagePlayerId = NO_PLAYER_ID;
+        switch (players) {
+            case 2:
+                this.commanderDamage = Arrays.asList(21, 21);
+                break;
+            case 3:
+                this.commanderDamage = Arrays.asList(21, 21, 21);
+                break;
+            case 4:
+                this.commanderDamage = Arrays.asList(21, 21, 21, 21);
+                break;
+            case 5:
+                this.commanderDamage = Arrays.asList(21, 21, 21, 21, 21);
+                break;
+            case 6:
+                this.commanderDamage = Arrays.asList(21, 21, 21, 21, 21, 21);
+                break;
+        }
+    }
+
+    public int getCommanderDamagePlayerId() {
+        return commanderDamagePlayerId;
+    }
+
+    public void setCommanderDamagePlayerId(int commanderDamagePlayerId) {
+        this.commanderDamagePlayerId = commanderDamagePlayerId;
     }
 
     public String getName() {
@@ -60,11 +87,11 @@ public class Player {
         this.poison = poison;
     }
 
-    public ArrayList<Integer> getCommanderDamage() {
+    public List<Integer> getCommanderDamage() {
         return commanderDamage;
     }
 
-    public void setCommanderDamage(ArrayList<Integer> commanderDamage) {
+    public void setCommanderDamage(List<Integer> commanderDamage) {
         this.commanderDamage = commanderDamage;
     }
 }

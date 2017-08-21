@@ -8,13 +8,16 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.gogodr.edhlifecounter.R;
 import com.example.gogodr.edhlifecounter.models.IPlayerActions;
 
 import butterknife.BindView;
+import butterknife.BindViews;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnLongClick;
 
 
 public class CounterFragment extends Fragment {
@@ -25,6 +28,9 @@ public class CounterFragment extends Fragment {
 
     @BindView(R.id.playerContainer)
     ConstraintLayout playerContainer;
+
+    @BindView(R.id.counterTxt)
+    TextView counterTxt;
 
 
     public CounterFragment() {
@@ -64,6 +70,18 @@ public class CounterFragment extends Fragment {
         actions.add(this.id, 1);
     }
 
+    @OnLongClick(R.id.leftArea)
+    boolean leftLongClick() {
+        actions.toggleState(this.id);
+        return true;
+    }
+
+    @OnLongClick(R.id.rightArea)
+    boolean rightLongClick() {
+        actions.toggleState(this.id);
+        return true;
+    }
+
     public void setActions(IPlayerActions actions) {
         this.actions = actions;
     }
@@ -80,5 +98,7 @@ public class CounterFragment extends Fragment {
         return this.id;
     }
 
-    ;
+    public void setText(String text) {
+        counterTxt.setText(text);
+    }
 }
