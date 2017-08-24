@@ -7,4 +7,5 @@ package com.example.gogodr.edhlifecounter.models;
 public interface IPlayerActions {
     void add(int playerId, int amount);
     void toggleState(int playerId);
+    void playerPrompt(int playerId);
 }

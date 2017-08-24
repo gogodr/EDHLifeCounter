@@ -3,6 +3,9 @@ package com.example.gogodr.edhlifecounter.ui;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 
 import com.example.gogodr.edhlifecounter.R;
 import com.example.gogodr.edhlifecounter.lifecounter.components.counter.CounterFragment;
@@ -41,6 +44,11 @@ public class Players2Activity extends AppCompatActivity implements IPlayer2View 
                 public void toggleState(int playerId) {
                     presenter.toggleState(playerId);
                 }
+
+                @Override
+                public void playerPrompt(int playerId) {
+
+                }
             }, flip));
         }
 
@@ -54,5 +62,9 @@ public class Players2Activity extends AppCompatActivity implements IPlayer2View 
     @Override
     public void updateValue(int playerId, String value) {
         playerFragments.get(playerId).setText(value);
+        Animation animation = new AlphaAnimation(0.5f,1);
+        animation.setDuration(300);
+        animation.setInterpolator(new AccelerateInterpolator(0.5f));
+        playerFragments.get(playerId).counterTxt.setAnimation(animation);
     }
 }

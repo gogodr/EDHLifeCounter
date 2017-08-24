@@ -30,7 +30,7 @@ public class CounterFragment extends Fragment {
     ConstraintLayout playerContainer;
 
     @BindView(R.id.counterTxt)
-    TextView counterTxt;
+    public TextView counterTxt;
 
 
     public CounterFragment() {
@@ -68,6 +68,11 @@ public class CounterFragment extends Fragment {
     @OnClick(R.id.rightArea)
     void add() {
         actions.add(this.id, 1);
+    }
+
+    @OnClick(R.id.playerArea)
+    void playerPrompt() {
+        actions.playerPrompt(this.id);
     }
 
     @OnLongClick(R.id.leftArea)

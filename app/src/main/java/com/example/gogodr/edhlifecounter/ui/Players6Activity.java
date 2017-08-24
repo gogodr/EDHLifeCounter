@@ -3,6 +3,13 @@ package com.example.gogodr.edhlifecounter.ui;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.ScaleAnimation;
+import android.widget.Toast;
 
 import com.example.gogodr.edhlifecounter.R;
 import com.example.gogodr.edhlifecounter.lifecounter.components.counter.CounterFragment;
@@ -43,6 +50,11 @@ public class Players6Activity extends AppCompatActivity implements IPlayer6View 
                 public void toggleState(int playerId) {
                     presenter.toggleState(playerId);
                 }
+
+                @Override
+                public void playerPrompt(int playerId) {
+                    Toast.makeText(getApplicationContext(),"hello",Toast.LENGTH_SHORT).show();
+                }
             }, flip));
         }
 
@@ -60,5 +72,16 @@ public class Players6Activity extends AppCompatActivity implements IPlayer6View 
     @Override
     public void updateValue(int playerId, String value) {
         playerFragments.get(playerId).setText(value);
+        AnimationSet animationset = new AnimationSet(true);
+        Animation animation = new AlphaAnimation(0.5f,1);
+        animation.setDuration(200);
+        animation.setInterpolator(new DecelerateInterpolator(0.5f));
+        Animation animation2 = new ScaleAnimation(0.9f,1,0.9f,1,Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
+        animation2.setDuration(200);
+        animation2.setInterpolator(new DecelerateInterpolator(0.5f));
+        animationset.addAnimation(animation);
+        animationset.addAnimation(animation2);
+
+        playerFragments.get(playerId).counterTxt.setAnimation(animationset);
     }
 }
